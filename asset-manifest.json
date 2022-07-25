@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/traffic-light-app/static/css/main.073c9b0a.css",
+    "main.js": "/traffic-light-app/static/js/main.b6ebb2fa.js",
+    "static/js/787.c0b8046b.chunk.js": "/traffic-light-app/static/js/787.c0b8046b.chunk.js",
+    "static/media/logo.svg": "/traffic-light-app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/traffic-light-app/index.html",
+    "main.073c9b0a.css.map": "/traffic-light-app/static/css/main.073c9b0a.css.map",
+    "main.b6ebb2fa.js.map": "/traffic-light-app/static/js/main.b6ebb2fa.js.map",
+    "787.c0b8046b.chunk.js.map": "/traffic-light-app/static/js/787.c0b8046b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.b6ebb2fa.js"
+  ]
+}
