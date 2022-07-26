@@ -7,6 +7,7 @@ import axios from "axios";
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [genderedUsers, setGenderedUsers] = useState(null);
+  const [lastDirection, setLastDirection] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const userId = cookies.UserId;
@@ -42,36 +43,26 @@ const Dashboard = () => {
     }
   }, [user]);
 
-  console.log("user", user);
-  console.log("gendered users", genderedUsers);
+  console.log(genderedUsers);
 
-  const characters = [
-    {
-      name: "Richard Hendricks",
-      url: "https://scontent.fiom1-1.fna.fbcdn.net/v/t1.15752-9/295531818_1083117802309913_5638759651114782723_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DIm1nfjg6PwAX_X07Dq&_nc_ht=scontent.fiom1-1.fna&oh=03_AVKhFc6yRACIEvqgZ7X4y1S8ZMQ889Dz5LKXh-8Lq2RSGA&oe=63043A95",
-    },
-    {
-      name: "Erlich Bachman",
-      url: "https://scontent.fiom1-1.fna.fbcdn.net/v/t1.15752-9/295531818_1083117802309913_5638759651114782723_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DIm1nfjg6PwAX_X07Dq&_nc_ht=scontent.fiom1-1.fna&oh=03_AVKhFc6yRACIEvqgZ7X4y1S8ZMQ889Dz5LKXh-8Lq2RSGA&oe=63043A95",
-    },
-    {
-      name: "Monica Hall",
-      url: "https://scontent.fiom1-1.fna.fbcdn.net/v/t1.15752-9/295531818_1083117802309913_5638759651114782723_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DIm1nfjg6PwAX_X07Dq&_nc_ht=scontent.fiom1-1.fna&oh=03_AVKhFc6yRACIEvqgZ7X4y1S8ZMQ889Dz5LKXh-8Lq2RSGA&oe=63043A95",
-    },
-    {
-      name: "Jared Dunn",
-      url: "https://scontent.fiom1-1.fna.fbcdn.net/v/t1.15752-9/295531818_1083117802309913_5638759651114782723_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DIm1nfjg6PwAX_X07Dq&_nc_ht=scontent.fiom1-1.fna&oh=03_AVKhFc6yRACIEvqgZ7X4y1S8ZMQ889Dz5LKXh-8Lq2RSGA&oe=63043A95",
-    },
-    {
-      name: "Dinesh Chugtai",
-      url: "https://scontent.fiom1-1.fna.fbcdn.net/v/t1.15752-9/295531818_1083117802309913_5638759651114782723_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DIm1nfjg6PwAX_X07Dq&_nc_ht=scontent.fiom1-1.fna&oh=03_AVKhFc6yRACIEvqgZ7X4y1S8ZMQ889Dz5LKXh-8Lq2RSGA&oe=63043A95",
-    },
-  ];
+  const updateMatches = async (matchedUserId) => {
+    try {
+      await axios.put("http://localhost:8000/addmatch", {
+        userId,
+        matchedUserId,
+      });
+      getUser();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const [lastDirection, setLastDirection] = useState();
+  console.log(user);
 
-  const swiped = (direction, nameToDelete) => {
-    console.log("removing: " + nameToDelete);
+  const swiped = (direction, swipedUserId) => {
+    if (direction === "right") {
+      updateMatches(swipedUserId);
+    }
     setLastDirection(direction);
   };
 
@@ -79,23 +70,31 @@ const Dashboard = () => {
     console.log(name + " left the screen!");
   };
 
+  const matchedUserIds = user?.matches
+    .map(({ user_id }) => user_id)
+    .concat(userId);
+
+  const filteredGenderedUsers = genderedUsers?.filter(
+    (genderedUser) => !matchedUserIds.includes(genderedUser.user_id)
+  );
+
   return (
     <div className="dashboard">
       <ChatContainer user={user} />
       <div className="swipe-container">
         <div className="card-container">
-          {characters.map((character) => (
+          {filteredGenderedUsers?.map((genderedUser) => (
             <TinderCard
               className="swipe"
-              key={character.name}
-              onSwipe={(dir) => swiped(dir, character.name)}
-              onCardLeftScreen={() => outOfFrame(character.name)}
+              key={genderedUser.first_name}
+              onSwipe={(dir) => swiped(dir, genderedUser.user_id)}
+              onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}
             >
               <div
-                style={{ backgroundImage: "url(" + character.url + ")" }}
+                style={{ backgroundImage: "url(" + genderedUser.url + ")" }}
                 className="card"
               >
-                <h3>{character.name}</h3>
+                <h3>{genderedUser.first_name}</h3>
               </div>
             </TinderCard>
           ))}
