@@ -1,5 +1,4 @@
 const PORT = 8000;
-const e = require("express");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
@@ -81,16 +80,37 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/users", async (req, res) => {
+app.get("/user", async (req, res) => {
   const client = new MongoClient(uri);
+  const userId = req.query.userId;
 
   try {
     await client.connect();
     const database = client.db("app-data");
     const users = database.collection("users");
 
-    const returnedUsers = await users.find().toArray();
-    res.send(returnedUsers);
+    const query = { user_id: userId };
+    const user = await users.findOne(query);
+    res.send(user);
+  } finally {
+    await client.close();
+  }
+});
+
+app.get("/gendered-users", async (req, res) => {
+  const client = new MongoClient(uri);
+  const gender = req.query.gender;
+
+  console.log("gender", gender);
+
+  try {
+    await client.connect();
+    const database = client.db("app-data");
+    const users = database.collection("users");
+    const query = { gender_identity: { $eq: gender } };
+    const foundUsers = await users.find(query).toArray();
+
+    res.send(foundUsers);
   } finally {
     await client.close();
   }
