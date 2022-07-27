@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
   res.json("Hello to my app");
 });
 
+// Sign Up to Database
+
 app.post("/signup", async (req, res) => {
   const client = new MongoClient(uri);
   const { email, password } = req.body;
@@ -49,6 +51,8 @@ app.post("/signup", async (req, res) => {
     res.status(201).json({ token, userId: generatedUserId });
   } catch (err) {
     console.log(err);
+  } finally {
+    await client.close();
   }
 });
 
@@ -77,6 +81,8 @@ app.post("/login", async (req, res) => {
     res.status(400).send("Invalid Credentials");
   } catch (err) {
     console.log(err);
+  } finally {
+    await client.close();
   }
 });
 
@@ -105,6 +111,20 @@ app.get("/users", async (req, res) => {
     await client.connect();
     const database = client.db("app-data");
     const users = database.collection("users");
+
+    const pipeline = [
+      {
+        $match: {
+          user_id: {
+            $in: userIds,
+          },
+        },
+      },
+    ];
+
+    const foundUsers = await users.aggregate(pipeline).toArray();
+
+    res.send(foundUsers);
   } finally {
     await client.close();
   }
@@ -114,15 +134,12 @@ app.get("/gendered-users", async (req, res) => {
   const client = new MongoClient(uri);
   const gender = req.query.gender;
 
-  console.log("gender", gender);
-
   try {
     await client.connect();
     const database = client.db("app-data");
     const users = database.collection("users");
     const query = { gender_identity: { $eq: gender } };
     const foundUsers = await users.find(query).toArray();
-
     res.send(foundUsers);
   } finally {
     await client.close();
@@ -175,6 +192,26 @@ app.put("/addmatch", async (req, res) => {
     };
     const user = await users.updateOne(query, updateDocument);
     res.send(user);
+  } finally {
+    await client.close();
+  }
+});
+
+app.get("/messages", async (req, res) => {
+  const { userId, correspondingUserId } = req.query;
+  const client = new MongoClient(uri);
+  console.log(userId, correspondingUserId);
+  try {
+    await client.connect();
+    const database = client.db("app-data");
+    const messages = database.collection("messages");
+
+    const query = {
+      from_userId: userId,
+      to_userId: correspondingUserId,
+    };
+    const foundMessages = await messages.find(query).toArray();
+    res.send(foundMessages);
   } finally {
     await client.close();
   }
