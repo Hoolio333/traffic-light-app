@@ -75,12 +75,13 @@ nav .nav-button:disabled {
 }
 
 nav .logo-container {
-  width: 170px;
+  width: 500px;
   margin: 15px;
 }
 
 nav .logo-container .logo {
   width: 100%;
+  border-radius: 60px;
 }
 
 /* ----- Home Page ----- */
@@ -91,7 +92,7 @@ nav .logo-container .logo {
   position: fixed;
   background: linear-gradient(to bottom,
       rgba(238, 5, 5, 0.8) 0%,
-      rgba(49, 225, 0, 0.8) 100%), url('images/Background\ image.jpg')
+      rgba(49, 225, 0, 0.8) 100%), url('images/background.jpg')
 }
 
 .home {

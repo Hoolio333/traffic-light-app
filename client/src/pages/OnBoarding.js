@@ -1,11 +1,11 @@
 import Nav from "../components/Nav";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const OnBoarding = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const [formData, setFormData] = useState({
     user_id: cookies.UserId,
     first_name: "",
@@ -23,11 +23,13 @@ const OnBoarding = () => {
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("submitted");
     e.preventDefault();
     try {
       const response = await axios.put("http://localhost:8000/user", {
         formData,
       });
+      console.log(response);
       const success = response.status === 200;
       if (success) navigate("/dashboard");
     } catch (err) {
@@ -47,11 +49,10 @@ const OnBoarding = () => {
     }));
   };
 
-  console.log(formData);
-
   return (
     <>
       <Nav minimal={true} setShowModal={() => {}} showModal={false} />
+
       <div className="onboarding">
         <h2>CREATE ACCOUNT</h2>
 
@@ -62,7 +63,7 @@ const OnBoarding = () => {
               id="first_name"
               type="text"
               name="first_name"
-              placeholder="FirstName"
+              placeholder="First Name"
               required={true}
               value={formData.first_name}
               onChange={handleChange}
@@ -132,7 +133,8 @@ const OnBoarding = () => {
               <label htmlFor="more-gender-identity">More</label>
             </div>
 
-            <label htmlFor="show-gender">Show gender on my profile</label>
+            <label htmlFor="show-gender">Show Gender on my Profile</label>
+
             <input
               id="show-gender"
               type="checkbox"
@@ -142,6 +144,7 @@ const OnBoarding = () => {
             />
 
             <label>Show Me</label>
+
             <div className="multiple-input-container">
               <input
                 id="man-gender-interest"
@@ -177,16 +180,17 @@ const OnBoarding = () => {
               id="about"
               type="text"
               name="about"
-              required="true"
+              required={true}
               placeholder="I like long walks..."
               value={formData.about}
               onChange={handleChange}
             />
+
             <input type="submit" />
           </section>
 
           <section>
-            <label htmlFor="about">Profile Profile</label>
+            <label htmlFor="url">Profile Photo</label>
             <input
               type="url"
               name="url"
@@ -205,5 +209,4 @@ const OnBoarding = () => {
     </>
   );
 };
-
 export default OnBoarding;
