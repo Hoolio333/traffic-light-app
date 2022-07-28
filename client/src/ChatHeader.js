@@ -15,11 +15,12 @@ const ChatHeader = ({ user }) => {
         <div className="img-container">
           <img src={user.url} alt={"photo of " + user.first_name} />
         </div>
-        <h3>{user.first_name}</h3>
+        <h3 className="chat-user-first-name">{user.first_name}🟢</h3>
       </div>
       <i className="log-out-icon" onClick={logout}>
-        ⇦
+        <button className="logout-button">S🚦gn Out! 👋</button>
       </i>
+      {/* <div>Signal</div> */}
     </div>
   );
 };

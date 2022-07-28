@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ChatContainer from "../ChatContainer";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import name from "../images/name.jpg";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -81,6 +82,12 @@ const Dashboard = () => {
         <div className="dashboard">
           <ChatContainer user={user} />
           <div className="swipe-container">
+            <div className="db-header-grid">
+              <div className="space"></div>
+              <div>
+                <img className="name" src={name} />
+              </div>
+            </div>
             <div className="card-container">
               {filteredGenderedUsers?.map((genderedUser) => (
                 <TinderCard
