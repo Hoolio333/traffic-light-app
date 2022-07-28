@@ -1,5 +1,6 @@
 import main from "../images/main.gif";
 import main2 from "../images/main2.gif";
+import name from "../images/name.jpg";
 
 const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
   const handleClick = () => {
@@ -13,6 +14,7 @@ const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
     <nav>
       <div className="logo-container">
         <img className="logo" src={minimal ? main2 : main} />
+        <img className="name" src={name} />
       </div>
 
       {!authToken && !minimal && (
@@ -21,7 +23,7 @@ const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
           onClick={handleClick}
           disabled={showModal}
         >
-          L🟢g🚦n
+          Log🚦n
         </button>
       )}
     </nav>
