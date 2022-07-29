@@ -33,10 +33,10 @@ const Home = () => {
         <h1 className="primary-title">
           Bus🚦ness or Pleasure?
           <hr />
-          S🚦gnal your status!🔴🟠🟢
+          S🚦gnal your status!🔴🟡🟢
         </h1>
         <button className="primary-button" onClick={handleClick}>
-          {authToken ? "Signout" : "Create Account"}
+          {authToken ? "Signout" : "S🚦gn Up"}
         </button>
 
         {showModal && (

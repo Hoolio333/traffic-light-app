@@ -54,7 +54,7 @@ const OnBoarding = () => {
       <Nav minimal={true} setShowModal={() => {}} showModal={false} />
 
       <div className="onboarding">
-        <h2>CREATE ACCOUNT</h2>
+        <h2 className="create-account">CREATE ACCOUNT</h2>
 
         <form onSubmit={handleSubmit}>
           <section>

@@ -48,13 +48,14 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
   return (
     <div className="auth-modal">
       <div className="close-icon" onClick={handleClick}>
-        ⓧ
+        🔴
       </div>
 
-      <h2>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h2>
+      <h2 className="sign-up">{isSignUp ? "S🚦gn Up" : "LOG 🚦N"}</h2>
       <p>
-        By clicking Log In, you agree to our terms. Learn how we process your
-        data in our Privacy Policy and Cookie Policy.
+        Signal your log in & agree to our terms. <br /> <br />
+        Caution - 'Stop, look & listen' to our Privacy Policy, Cookie Policy &
+        how we protect your data.
       </p>
       <form onSubmit={handleSubmit}>
         <input
@@ -88,7 +89,11 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       </form>
 
       <hr />
-      <h2>GET THE APP</h2>
+      <h2>
+        CR🟢SS OVER TO THE APP
+        <br /> <br />
+        🚦_ _ _ _ _ _ _ _ _ _ _ _ _🚦
+      </h2>
     </div>
   );
 };
