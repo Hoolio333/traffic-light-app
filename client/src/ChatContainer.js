@@ -12,10 +12,10 @@ const ChatContainer = ({ user }) => {
 
       <div className="options-gap">
         <button className="option" onClick={() => setClickedUser(null)}>
-          Matches
+          Cross🚦ngs
         </button>
         <button className="option" disabled={!clickedUser}>
-          Chat
+          S🚦gnals
         </button>
       </div>
 

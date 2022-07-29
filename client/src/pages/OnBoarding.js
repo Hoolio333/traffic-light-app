@@ -54,11 +54,12 @@ const OnBoarding = () => {
       <Nav minimal={true} setShowModal={() => {}} showModal={false} />
 
       <div className="onboarding">
-        <h2 className="create-account">CREATE ACCOUNT</h2>
-
+        <h2 className="create-account">
+          🚦 _ _ _ _ _ _ _ _ _ _ _ _ S🚦gn Up _ _ _ _ _ _ _ _ _ _ _ _ 🚦
+        </h2>
         <form onSubmit={handleSubmit}>
           <section>
-            <label htmlFor="first_name">First Name</label>
+            <label htmlFor="first_name">F🚦rst Name</label>
             <input
               id="first_name"
               type="text"
@@ -69,7 +70,7 @@ const OnBoarding = () => {
               onChange={handleChange}
             />
 
-            <label>Birthday</label>
+            <label>B🚦rthday</label>
             <div className="multiple-input-container">
               <input
                 id="dob_day"
@@ -130,10 +131,10 @@ const OnBoarding = () => {
                 onChange={handleChange}
                 checked={formData.gender_identity === "more"}
               />
-              <label htmlFor="more-gender-identity">More</label>
+              <label htmlFor="more-gender-identity">Other</label>
             </div>
 
-            <label htmlFor="show-gender">Show Gender on my Profile</label>
+            <label htmlFor="show-gender">Show Gender on my Prof🚦le</label>
 
             <input
               id="show-gender"
@@ -190,7 +191,7 @@ const OnBoarding = () => {
           </section>
 
           <section>
-            <label htmlFor="url">Profile Photo</label>
+            <label htmlFor="url">Prof🚦le Photo</label>
             <input
               type="url"
               name="url"

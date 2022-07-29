@@ -100,7 +100,7 @@ const Dashboard = () => {
                     style={{ backgroundImage: "url(" + genderedUser.url + ")" }}
                     className="card"
                   >
-                    <h3>{genderedUser.first_name}</h3>
+                    <h3 className="first-name">{genderedUser.first_name}</h3>
                   </div>
                 </TinderCard>
               ))}
