@@ -1,6 +1,6 @@
 import main from "../images/main.gif";
 import main2 from "../images/main2.gif";
-import name from "../images/name.jpg";
+import name from "../images/name.png";
 
 const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
   const handleClick = () => {

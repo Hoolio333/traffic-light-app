@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ChatContainer from "../ChatContainer";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import name from "../images/name.jpg";
+import name from "../images/name.png";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
