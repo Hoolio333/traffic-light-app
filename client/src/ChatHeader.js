@@ -1,7 +1,9 @@
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ChatHeader = ({ user }) => {
+  const [userStatus, setUserStatus] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   let navigate = useNavigate();
@@ -15,6 +17,26 @@ const ChatHeader = ({ user }) => {
   const handleClick = () => {
     navigate("/profile");
   };
+
+  function handleChange(event) {
+    const { type, value, name } = event.target;
+
+    if (name === "love" && type === "text") {
+      setUserStatus({ ...userStatus, loveStatus: value });
+    }
+    if (name === "social" && type === "text") {
+      setUserStatus({ ...userStatus, socialStatus: value });
+    }
+    if (name === "business" && type === "text") {
+      setUserStatus({ ...userStatus, businessStatus: value });
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    console.log(userStatus);
+  }
 
   return (
     <>
@@ -35,22 +57,52 @@ const ChatHeader = ({ user }) => {
         <br />
       </div>
       <div className="status-color">
-        <div className="love">
+        <div className="love-status">
           <h3>
-            🚦ove 🔴
-            <input className="love-input" type="text" />
+            🚦ove{" "}
+            <input
+              className="love-input"
+              name="love"
+              type="text"
+              love="loveStatus"
+              onChange={handleChange}
+              value={userStatus.loveStatus}
+            />
+            <button type="submit" onSubmit={handleSubmit}>
+              🔴
+            </button>
           </h3>
         </div>
-        <div className="social">
+        <div className="social-status">
           <h3>
-            Soc🚦al 🟡
-            <input className="social-input" type="text" />
+            Soc🚦al
+            <input
+              className="social-input"
+              name="social"
+              type="text"
+              social="socialStatus"
+              onChange={handleChange}
+              value={userStatus.socialStatus}
+            />
+            <button type="submit" onSubmit={handleSubmit}>
+              🟡
+            </button>
           </h3>
         </div>
-        <div className="business">
+        <div className="business-status">
           <h3>
-            Bus🚦ness 🟢
-            <input className="business-input" type="text" />
+            Bus🚦ness
+            <input
+              className="business-input"
+              name="business"
+              type="text"
+              business="businessStatus"
+              onChange={handleChange}
+              value={userStatus.businessStatus}
+            />
+            <button type="submit" onSubmit={handleSubmit}>
+              🟢
+            </button>
           </h3>
         </div>
         <hr />
