@@ -1,7 +1,10 @@
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const ChatHeader = ({ user }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  let navigate = useNavigate();
 
   const logout = () => {
     removeCookie("UserId", cookies.UserId);
@@ -9,12 +12,20 @@ const ChatHeader = ({ user }) => {
     window.location.reload();
   };
 
+  const handleClick = () => {
+    navigate("/profile");
+  };
+
   return (
     <>
       <div className="chat-container-header-top">
-        <div className="profile">
+        <div className="profile-chat-header">
           <div className="img-container">
-            <img src={user.url} alt={"photo of " + user.first_name} />
+            <img
+              onClick={handleClick}
+              src={user.url}
+              alt={"photo of " + user.first_name}
+            />
           </div>
           <h3 className="chat-user-first-name">{user.first_name}</h3>
         </div>

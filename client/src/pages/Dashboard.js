@@ -5,11 +5,12 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import name from "../images/name.png";
 
-const Dashboard = () => {
-  const [user, setUser] = useState(null);
+const Dashboard = ({ user, setUser }) => {
+  // const [user, setUser] = useState(null);
   const [genderedUsers, setGenderedUsers] = useState(null);
   const [lastDirection, setLastDirection] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  console.log(cookies);
 
   const userId = cookies.UserId;
 
@@ -68,8 +69,8 @@ const Dashboard = () => {
   };
 
   const matchedUserIds = user?.matches
-    .map(({ user_id }) => user_id)
-    .concat(userId);
+    ? user.matches.map(({ user_id }) => user_id).concat(userId)
+    : [];
 
   const filteredGenderedUsers = genderedUsers?.filter(
     (genderedUser) => !matchedUserIds.includes(genderedUser.user_id)

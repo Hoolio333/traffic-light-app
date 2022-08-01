@@ -339,6 +339,7 @@ nav .logo-container .name {
 {
   background-color: black;
   color: white;
+  width: 300px;
 }
 
 .chat-container .option {
@@ -358,7 +359,7 @@ nav .logo-container .name {
   gap: 30px;
 }
 
-.chat-container .profile,
+.chat-container .profile-chat-header,
 .chat-container .log-out-icon {
   display: flex;
   align-items: center;
@@ -414,4 +415,22 @@ nav .logo-container .name {
 
 .chat .message-name {
   color: red;
+}
+
+.profile {
+  padding: 20px;
+  text-align: start;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+.profile .love-status-input,
+.profile .social-status-input,
+.profile .business-status-input
+{
+  width: 1300px;
+  height: 200px;
+  background: linear-gradient(45deg, rgba(238, 5, 5, 0.8), rgba(49, 225, 0, 0.8));
+  color: rgb(255, 255, 255);
 }
