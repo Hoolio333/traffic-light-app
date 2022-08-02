@@ -1,6 +1,7 @@
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import main3 from "./images/main3.gif";
 
 const ChatHeader = ({ user }) => {
   const [userStatus, setUserStatus] = useState("");
@@ -41,7 +42,9 @@ const ChatHeader = ({ user }) => {
   return (
     <>
       <div className="chat-container-header-top">
-        <div className="profile-chat-header">
+        <div className="logo" src={main3}></div>
+
+        <div className="profile-chat-header grid-two">
           <div className="img-container">
             <img
               onClick={handleClick}

@@ -372,9 +372,11 @@ nav .logo-container .name {
   gap: 30px;
 }
 
-.chat-container .profile-chat-header,
+.chat-container .grid-one,
+.chat-container .grid-two,
 .chat-container .log-out-icon {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
   align-items: center;
   padding: 10px;
   color: rgb(255, 255, 255)
@@ -396,6 +398,11 @@ nav .logo-container .name {
 
 .chat-container .chat-user-first-name {
     color: rgb(255, 255, 255)
+}
+
+.chat-container .chat-bottom {
+  background-color: black;
+  color: white;
 }
 
 .img-container {
