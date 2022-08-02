@@ -32,7 +32,10 @@ const Home = () => {
       <div className="home">
         <h1 className="primary-title">
           Bus🚦ness or Pleasure?
-          <hr />
+          <div>
+            🚦 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            - - - - - - - - - - - - - - - - - 🚦
+          </div>
           S🚦gnal your status!🔴🟡🟢
         </h1>
         <button className="primary-button" onClick={handleClick}>

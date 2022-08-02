@@ -45,10 +45,10 @@ const Profile = ({ user }) => {
       <div className="love-info">
         <h4>
           🚦ove Status 🚦nfo{" "}
-          <button type="submit" onSubmit={handleSubmit}>
+          {/* <button type="submit" onSubmit={handleSubmit}>
             🔴
-          </button>
-          :
+          </button> */}
+          🔴:
         </h4>
         <input
           className="love-info-input"
@@ -62,10 +62,10 @@ const Profile = ({ user }) => {
       <div className="social-info">
         <h4>
           Soc🚦al Status 🚦nfo{" "}
-          <button type="submit" onSubmit={handleSubmit}>
+          {/* <button type="submit" onSubmit={handleSubmit}>
             🟡
-          </button>
-          :
+          </button> */}
+          🟡:
         </h4>
         <input
           className="social-info-input"
@@ -79,10 +79,10 @@ const Profile = ({ user }) => {
       <div className="business-info">
         <h4>
           Bus🚦ness Status 🚦nfo{" "}
-          <button type="submit" onSubmit={handleSubmit}>
+          {/* <button type="submit" onSubmit={handleSubmit}>
             🟢
-          </button>
-          :
+          </button> */}
+          🟢:
         </h4>
         <input
           className="business-info-input"

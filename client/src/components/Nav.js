@@ -1,5 +1,5 @@
-import main from "../images/main.gif";
-import main2 from "../images/main2.gif";
+import main3 from "../images/main3.gif";
+import main4 from "../images/main4.gif";
 import name from "../images/name.png";
 
 const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
@@ -13,7 +13,7 @@ const Nav = ({ minimal, setShowModal, showModal, setIsSignUp }) => {
   return (
     <nav>
       <div className="logo-container">
-        <img className="logo" src={minimal ? main2 : main} />
+        <img className="logo" src={minimal ? main3 : main4} />
         <img className="name" src={name} />
       </div>
 

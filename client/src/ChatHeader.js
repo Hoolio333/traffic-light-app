@@ -1,7 +1,7 @@
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import main3 from "./images/main3.gif";
+// import main3 from "./images/main3.gif";
 
 const ChatHeader = ({ user }) => {
   const [userStatus, setUserStatus] = useState("");
@@ -12,7 +12,8 @@ const ChatHeader = ({ user }) => {
   const logout = () => {
     removeCookie("UserId", cookies.UserId);
     removeCookie("AuthToken", cookies.AuthToken);
-    window.location.reload();
+    // window.location.reload();
+    navigate("/");
   };
 
   const handleClick = () => {
@@ -42,7 +43,7 @@ const ChatHeader = ({ user }) => {
   return (
     <>
       <div className="chat-container-header-top">
-        <div className="logo" src={main3}></div>
+        {/* <img className="logo" src={main3} /> */}
 
         <div className="profile-chat-header grid-two">
           <div className="img-container">
@@ -71,9 +72,10 @@ const ChatHeader = ({ user }) => {
               onChange={handleChange}
               value={userStatus.loveStatus}
             />
-            <button type="submit" onSubmit={handleSubmit}>
-              🔴
-            </button>
+            {/* <button type="submit" onSubmit={handleSubmit}>
+              
+            </button> */}
+            🔴
           </h3>
         </div>
         <div className="social-status">
@@ -87,9 +89,10 @@ const ChatHeader = ({ user }) => {
               onChange={handleChange}
               value={userStatus.socialStatus}
             />
-            <button type="submit" onSubmit={handleSubmit}>
+            {/* <button type="submit" onSubmit={handleSubmit}>
               🟡
-            </button>
+            </button> */}
+            🟡
           </h3>
         </div>
         <div className="business-status">
@@ -103,9 +106,10 @@ const ChatHeader = ({ user }) => {
               onChange={handleChange}
               value={userStatus.businessStatus}
             />
-            <button type="submit" onSubmit={handleSubmit}>
+            {/* <button type="submit" onSubmit={handleSubmit}>
               🟢
-            </button>
+            </button> */}
+            🟢
           </h3>
         </div>
         <hr />
