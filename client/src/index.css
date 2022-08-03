@@ -18,6 +18,7 @@ h2 {
 .primary-title {
   font-size: 40px;
   background-color: rgb(255, 255, 255);
+  margin-bottom: 10px;
 }
 
 .primary-button {
@@ -27,7 +28,8 @@ h2 {
   background: linear-gradient(45deg, rgba(238, 5, 5, 0.8), rgba(49, 225, 0, 0.8));
   padding: 12px 30px;
   border-radius: 30px;
-  border: 2px solid rgb(0, 0, 0);
+  border: 6px solid rgb(0, 0, 0);
+  outline: 4px solid rgb(255, 255, 255);
 }
 
 .primary-button:hover {
@@ -65,7 +67,8 @@ nav .nav-button {
   font-size: 40px;
   padding: 10px 20px;
   border-radius: 50px;
-  border: 2px solid rgb(0, 0, 0);
+  border: 6px solid rgb(0, 0, 0);
+  outline: 4px solid rgb(255, 255, 255);
   margin: 10px;
   height: 150px;
   width: 150px;
@@ -88,11 +91,13 @@ nav .logo-container {
 nav .logo-container .logo {
   width: 100%;
   border-radius: 60px;
+  border: solid 4px black;
 }
 
 nav .logo-container .name {
   width: 100%;
   border-radius: 40px;
+  border: solid 4px black;
 }
 
 /* ----- Home Page ----- */
@@ -107,7 +112,7 @@ nav .logo-container .name {
 }
 
 .home {
-  margin-top: 23vh;
+  margin-top: 20vh;
 }
 
 .home .primary-title {
@@ -473,4 +478,15 @@ nav .logo-container .name {
   height: 200px;
   background: linear-gradient(45deg, rgba(238, 5, 5, 0.8), rgba(49, 225, 0, 0.8));
   color: rgb(255, 255, 255);
+}
+
+.profile .return-to-dashboard {
+  background: linear-gradient(45deg, rgba(238, 5, 5, 0.8), rgba(49, 225, 0, 0.8));
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 30px;
+}
+
+.profile .return-to-dashboard:hover {
+  background: linear-gradient(45deg, rgba(49, 225, 0, 0.8), rgba(238, 5, 5, 0.8));
 }

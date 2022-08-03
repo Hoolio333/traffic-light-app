@@ -9,6 +9,8 @@ const Profile = ({ user }) => {
   const [userInfo, setUserInfo] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
+  let navigate = useNavigate();
+
   function handleChange(event) {
     const { type, value, name } = event.target;
 
@@ -28,6 +30,10 @@ const Profile = ({ user }) => {
 
     console.log(userInfo);
   }
+
+  const handleClick = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <div className="profile">
@@ -50,14 +56,15 @@ const Profile = ({ user }) => {
           </button> */}
           🔴:
         </h4>
-        <input
+        <p>I am happily Married. Not on here for Love, sorry!</p>
+        {/* <input
           className="love-info-input"
           name="love"
           type="text"
           love="loveInfo"
           onChange={handleChange}
           value={userInfo.loveInfo}
-        />
+        /> */}
       </div>
       <div className="social-info">
         <h4>
@@ -67,14 +74,14 @@ const Profile = ({ user }) => {
           </button> */}
           🟡:
         </h4>
-        <input
+        {/* <input
           className="social-info-input"
           name="social"
           type="text"
           social="socialInfo"
           onChange={handleChange}
           value={userInfo.socialInfo}
-        />
+        /> */}
       </div>
       <div className="business-info">
         <h4>
@@ -84,17 +91,20 @@ const Profile = ({ user }) => {
           </button> */}
           🟢:
         </h4>
-        <input
+        {/* <input
           className="business-info-input"
           name="business"
           type="text"
           business="businessInfo"
           onChange={handleChange}
           value={userInfo.businessInfo}
-        />
+        /> */}
       </div>
       <h4 className="profile-page-phot">Prof🚦le Photo:</h4>
       <img src={user.url} alt={user.first_name + " profile"} />
+      <button className="return-to-dashboard" onClick={handleClick}>
+        Return To Dashboard
+      </button>
     </div>
   );
 };
