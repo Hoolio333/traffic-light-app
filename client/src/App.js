@@ -30,6 +30,23 @@ const App = () => {
           />
         )}
       </Routes>
+
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        {authToken && (
+          <Route
+            path="/dashboard"
+            element={<Dashboard user={user} setUser={setUser} />}
+          />
+        )}
+        {authToken && <Route path="/onboarding" element={<OnBoarding />} />}
+        {authToken && (
+          <Route
+            path="/profile"
+            element={<Profile user={user} setUser={setUser} />}
+          />
+        )}
+      </Routes> */}
     </BrowserRouter>
   );
 };

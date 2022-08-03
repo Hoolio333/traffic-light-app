@@ -102,6 +102,7 @@ const Profile = ({ user }) => {
       </div>
       <h4 className="profile-page-phot">Prof🚦le Photo:</h4>
       <img src={user.url} alt={user.first_name + " profile"} />
+      <br />
       <button className="return-to-dashboard" onClick={handleClick}>
         Return To Dashboard
       </button>
