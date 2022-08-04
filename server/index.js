@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 // require("dotenv").config();
 
 const uri =
-  "mongodb+srv://hoolio333:mypassword@cluster0.mydhgx7.mongodb.net/Cluster0?retryWrites=true&w=majority";
+  "mongodb+srv://hoolio333:mypassword@cluster0.mydhgx7.mongodb.net/Cluster0?retryWrites=true&w=majority&ssl=true";
 
 const app = express();
 app.use(cors());
@@ -77,7 +77,7 @@ app.post("/login", async (req, res) => {
     );
 
     if (user && correctPassword) {
-      const token = jwt.sign(user, email, {
+      const token = jwt.sign({ id: user._id }, email, {
         expiresIn: 60 * 24,
       });
       res.status(201).json({ token, userId: user.user_id });
