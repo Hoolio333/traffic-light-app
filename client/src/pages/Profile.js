@@ -56,7 +56,8 @@ const Profile = ({ user }) => {
           </button> */}
           🔴:
         </h4>
-        <p>I am happily Married. Not on here for Love, sorry!</p>
+        <br />
+        <p>I am in a relationship. Not on here for love, sorry!</p>
         {/* <input
           className="love-info-input"
           name="love"
@@ -74,6 +75,8 @@ const Profile = ({ user }) => {
           </button> */}
           🟡:
         </h4>
+        <p>Always looking to meet new fun & friendly people.</p> <br />
+        <p>Come chat to me, I'm super cool!</p>
         {/* <input
           className="social-info-input"
           name="social"
@@ -99,6 +102,12 @@ const Profile = ({ user }) => {
           onChange={handleChange}
           value={userInfo.businessInfo}
         /> */}
+        <p>I have recently created a IT Start Up Company.</p>
+        <br />
+        <p>
+          Seeking investment or people in the same industry to brainstorm &
+          potentially work with. Check out my business: http://myitstartup.com
+        </p>
       </div>
       <h4 className="profile-page-phot">Prof🚦le Photo:</h4>
       <img src={user.url} alt={user.first_name + " profile"} />

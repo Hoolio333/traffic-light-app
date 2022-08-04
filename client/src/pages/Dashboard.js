@@ -9,8 +9,8 @@ const Dashboard = ({ user, setUser }) => {
   // const [user, setUser] = useState(null);
   const [genderedUsers, setGenderedUsers] = useState(null);
   const [lastDirection, setLastDirection] = useState();
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-  console.log(cookies);
+  const [cookies, setCookie, removeCookie] = useCookies([user]);
+  console.log("/dashboard:cookies", cookies);
 
   const userId = cookies.UserId;
 
@@ -65,7 +65,7 @@ const Dashboard = ({ user, setUser }) => {
   };
 
   const outOfFrame = (name) => {
-    console.log(name + " left the screen!");
+    console.log(name + "left the screen!");
   };
 
   const matchedUserIds = user?.matches
@@ -106,7 +106,7 @@ const Dashboard = ({ user, setUser }) => {
                 </TinderCard>
               ))}
               <div className="swipe-info">
-                {lastDirection ? <p>You swiped {lastDirection}</p> : <p />}
+                {lastDirection ? <p>You swiped {lastDirection} </p> : <p />}
               </div>
             </div>
           </div>

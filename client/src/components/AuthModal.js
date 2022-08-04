@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-const AuthModal = ({ setShowModal, isSignUp }) => {
+const AuthModal = ({ setShowModal, isSignUp, cookies, setCookie }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(null);
+  // const [cookies, setCookie, removeCookie] = useCookies(["AuthToken"]);
 
+  console.log("renderingModal", cookies.AuthToken);
   let navigate = useNavigate();
 
-  console.log(email, password, confirmPassword);
+  // useEffect(() => {
+  if (cookies.AuthToken) {
+    navigate("/dashboard");
+  }
+  // }, [cookies]);
+
+  // console.log(email, password, confirmPassword);
 
   const handleClick = () => {
     setShowModal(false);
@@ -31,13 +38,20 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
         `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
         { email, password }
       );
+      console.log("log-inresponse", response.data.token);
+      console.log(new TextEncoder().encode(response.data.token).length);
 
-      setCookie("AuthToken", response.data.token);
+      setCookie("Test", "apple");
+      setCookie("Test2", response.data.token);
+      setCookie("AuthToken", response.data.token, { path: "/" });
       setCookie("UserId", response.data.userId);
+
+      // const authToken = cookies.get("AuthToken");
+      // console.log("Cookies.get", authToken);
 
       const success = response.status === 201;
       if (success && isSignUp) navigate("/onboarding");
-      if (success && !isSignUp) navigate("/dashboard");
+      // if (success && !isSignUp) navigate("/dashboard");
 
       // window.location.reload();
     } catch (error) {

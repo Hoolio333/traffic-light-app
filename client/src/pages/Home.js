@@ -3,10 +3,10 @@ import AuthModal from "../components/AuthModal";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 
-const Home = () => {
+const Home = ({ cookies, setCookie, removeCookie }) => {
   const [showModal, setShowModal] = useState(false);
   const [isSignUp, setIsSignUp] = useState(true);
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  // const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const authToken = cookies.AuthToken;
 
   const handleClick = () => {
@@ -43,7 +43,12 @@ const Home = () => {
         </button>
 
         {showModal && (
-          <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
+          <AuthModal
+            cookies={cookies}
+            setCookie={setCookie}
+            setShowModal={setShowModal}
+            isSignUp={isSignUp}
+          />
         )}
       </div>
     </div>
